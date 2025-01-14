@@ -165,7 +165,7 @@ export default class EditableTextTypeWidget extends AbstractTextTypeWidget {
                 return;
             }
 
-            console.log(`CKEditor changed to ${currentState}`);
+            logInfo(`CKEditor changed to ${currentState}`)
 
             this.watchdog.crashes.forEach(crashInfo => console.log(crashInfo));
 
@@ -177,6 +177,7 @@ export default class EditableTextTypeWidget extends AbstractTextTypeWidget {
         });
 
         this.watchdog.setCreator(async (elementOrData, editorConfig) => {
+            logInfo("Creating new CKEditor")
             const extraOpts = {};
             if (isClassicEditor) {
                 extraOpts.toolbar = {
